@@ -4,7 +4,7 @@ import 'package:singleton_estados/models/user.dart';
 
 class _UserService{
   User _user = User(); 
-  StreamController<User> _controller = StreamController<User>();
+  final StreamController<User> _controller = StreamController<User>.broadcast();
 
   User get user => _user;
 
@@ -20,6 +20,10 @@ class _UserService{
   void changeAge(int edad){
 _user.edad = edad;
 _controller.add(_user);
+  }
+
+  dispose(){
+    _controller.close();
   }
 }
 

@@ -9,9 +9,16 @@ class Pagina2Page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('pagina 2'),
+        title: StreamBuilder(
+          stream: userService.controller,
+          builder: (BuildContext context, AsyncSnapshot<User> snapshot) { 
+            return snapshot.hasData
+            ? Text('Nombre: ${snapshot.data!.nombre}')
+            : const Text('pagina 2');
+           },),
         centerTitle: true,
       ),
       body: Center(
