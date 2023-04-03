@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:singleton_estados/services/user_service.dart';
 
 class PaginaPage extends StatelessWidget {
   const PaginaPage({super.key});
@@ -10,7 +11,7 @@ class PaginaPage extends StatelessWidget {
         title: const Text('pagina 1'),
         centerTitle: true,
       ),
-      body: const InfotmacionUsuarios(),
+      body:  userService.userExist?const InfotmacionUsuarios() : Center(child: Text('no hay informacion'),),
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pushNamed(context, 'pagina2')),
