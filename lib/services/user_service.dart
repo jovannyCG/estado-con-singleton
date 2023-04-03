@@ -9,4 +9,9 @@ class UserService with ChangeNotifier{
   User? get user => _user;
   bool get userExist => (_user !=null) ? true : false;
 
+  set setUser (User user){
+    _user = user;
+    notifyListeners();
+  }
+
 }

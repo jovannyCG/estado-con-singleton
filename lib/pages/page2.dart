@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:singleton_estados/models/user.dart';
+import 'package:singleton_estados/services/user_service.dart';
 
 
 class Pagina2Page extends StatelessWidget {
@@ -21,7 +24,9 @@ class Pagina2Page extends StatelessWidget {
               color: Colors.blue,
               child: const Text('establecer usuario',  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
               onPressed: (){
-
+               final userService = Provider.of<UserService>(context, listen: false);
+               final newUser = User(nombre: 'jovanny', edad: 25,);
+               userService.setUser =newUser;
             }),
             MaterialButton(
               color: Colors.blue,

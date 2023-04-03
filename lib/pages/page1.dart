@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:singleton_estados/models/user.dart';
 import 'package:singleton_estados/services/user_service.dart';
 
 class PaginaPage extends StatelessWidget {
@@ -14,7 +15,7 @@ class PaginaPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: userService.userExist
-      ? const InfotmacionUsuarios()
+      ?  InfotmacionUsuarios(user: userService.user)
       :const Center(child: Text('no hay usuario seleccionado'),),
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.arrow_back),
@@ -24,10 +25,11 @@ class PaginaPage extends StatelessWidget {
 }
 
 class InfotmacionUsuarios extends StatelessWidget {
-  const InfotmacionUsuarios({
-    super.key,
-  });
 
+   final User? user;
+
+  const InfotmacionUsuarios({super.key, required this.user}); 
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,23 +38,23 @@ class InfotmacionUsuarios extends StatelessWidget {
       padding: const EdgeInsetsDirectional.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text(
+        children:  [
+          const Text(
             'general',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          Divider(),
-          ListTile(title: Text('nombre: ')),
-          ListTile(
-            title: Text('edad: '),
+          const Divider(),
+          ListTile(title: Text('nombre: ${user!.nombre}')),
+           ListTile(
+            title: Text('edad: ${user!.edad}'),
           ),
-          Text(
+          const Text(
             'profesiones',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          Divider(),
-          ListTile(title: Text('preofesion1 : ')),
-          ListTile(
+          const Divider(),
+          const ListTile(title: Text('preofesion1 : ')),
+          const ListTile(
             title: Text('preofesion1 '),
           )
         ],
