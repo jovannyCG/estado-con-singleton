@@ -1,11 +1,11 @@
 class User {
-  late String nombre;
-  late int edad;
-  late List<String> profesiones;
+   String? nombre;
+   int? edad;
+   List<String>? profesiones;
 
   User({
-    nombre,
-    edad,
-    profesiones,
+    this.nombre,
+    this.edad,
+    this.profesiones,
   });
 }

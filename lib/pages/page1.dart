@@ -13,6 +13,11 @@ class PaginaPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('pagina 1'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: userService.removeUser,
+            icon: const Icon(Icons.logout))
+        ],
       ),
       body: userService.userExist
       ?  InfotmacionUsuarios(user: userService.user)
