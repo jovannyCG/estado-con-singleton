@@ -4,8 +4,8 @@ class User {
   late List<String> profesiones;
 
   User({
-    required nombre,
-    required edad,
-    required profesiones,
+    nombre,
+    edad,
+    profesiones,
   });
 }
