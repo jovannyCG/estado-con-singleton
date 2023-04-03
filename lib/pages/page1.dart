@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:singleton_estados/services/user_service.dart';
-
+import 'package:singleton_estados/models/user.dart';
 class PaginaPage extends StatelessWidget {
   const PaginaPage({super.key});
 
@@ -11,7 +11,7 @@ class PaginaPage extends StatelessWidget {
         title: const Text('pagina 1'),
         centerTitle: true,
       ),
-      body:  userService.userExist?const InfotmacionUsuarios() : Center(child: Text('no hay informacion'),),
+      body:  userService.userExist? InfotmacionUsuarios(user: userService.user) : const Center(child: Text('no hay informacion'),),
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pushNamed(context, 'pagina2')),
@@ -20,8 +20,9 @@ class PaginaPage extends StatelessWidget {
 }
 
 class InfotmacionUsuarios extends StatelessWidget {
+  final User user;
   const InfotmacionUsuarios({
-    super.key,
+    super.key, required this.user,
   });
 
   @override
@@ -32,15 +33,15 @@ class InfotmacionUsuarios extends StatelessWidget {
       padding: const EdgeInsetsDirectional.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children:  [
           Text(
             'general',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           Divider(),
-          ListTile(title: Text('nombre: ')),
+          ListTile(title: Text('nombre: ${user.nombre}')),
           ListTile(
-            title: Text('edad: '),
+            title: Text('edad: ${user.edad}'),
           ),
           Text(
             'profesiones',

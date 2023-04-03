@@ -1,11 +1,11 @@
 class User {
-  late String nombre;
-  late int edad;
-  late List<String> profesiones;
+  String nombre = 'jovanny';
+  late int edad = 0;
+  List<String>? profesiones = [];
 
   User({
     required nombre,
-    required edad,
-    required profesiones,
-  });
+    edad,
+    profesiones,
+  }); //:assert(nombre !=null);
 }
